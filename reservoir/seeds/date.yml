@@ -1,0 +1,17 @@
+version: 2 
+
+seeds: 
+  - name: date
+    config: 
+      schema: sourcedata
+      column_types: 
+        DTE_DMN_KEY: integer
+        FULL_DTE: date
+        DOFW: integer
+        DOFM: integer
+        DAY_NBR_OALL: integer
+        WEEK_NBR_YR: integer
+        DAY: varchar
+        MON: integer
+        QTR: integer
+        YEAR: integer

@@ -1,0 +1,14 @@
+version: 2 
+
+seeds: 
+  - name: MonthlyProd
+    config: 
+      schema: sourcedata
+      column_types: 
+        UniqueId: varchar
+        Date: date
+        Oil: numeric
+        Gas: numeric
+        Water: numeric
+        Liquid: numeric
+        WellUptimeDays: numeric

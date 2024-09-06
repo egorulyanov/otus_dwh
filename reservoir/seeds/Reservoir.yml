@@ -1,0 +1,12 @@
+version: 2 
+
+seeds: 
+  - name: Reservoir
+    config: 
+      schema: sourcedata
+      column_types: 
+        PK_LITHOSTRATIGRAPHIC_UNIT: integer
+        LITHOSTRATIGRAPHIC_UNIT_ID: integer
+        LITHOSTRATIGRAPHIC_UNIT_NAME: varchar
+        REGIONAL_STAGE: varchar
+        PRODUCTION_RESERVOIR: varchar
