@@ -136,3 +136,5 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+requirements_old.txt
