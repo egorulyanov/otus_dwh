@@ -1,0 +1,19 @@
+version: 2 
+
+seeds: 
+  - name: Well
+    config: 
+      schema: sourcedata
+      column_types: 
+        PK_WELL: integer
+        WELL_NAME: varchar
+        ACTIVE_WELLBORE_NUMBER: integer
+        WELL_X_COORDINATE: numeric
+        WELL_Y_COORDINATE: numeric
+        WELL_CLASS: varchar
+        INITIAL_WELL_CLASS: varchar
+        SLOT_NAME: varchar
+        SLOT_CODE: varchar
+        SLOT_X_COORDINATE: numeric
+        SLOT_Y_COORDINATE: numeric
+        SPUD_DATE: date

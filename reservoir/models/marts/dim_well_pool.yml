@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: dim_well_pool
+    columns:
+      - name: well_pool_key
+        description: The surrogate key of the dim_well_pool
+        tests:
+          - unique
+          - not_null
+
+      - name: LITHOSTRATIGRAPHIC_UNIT_NAME
+      - name: REGIONAL_STAGE
+      - name: OFM_UniqueID
+      - name: Reservoir_Name_Ru
+
+

@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: dim_well_reservoir
+    columns:
+      - name: well_reservoir_key
+        description: The surrogate key of the dim_well_reservoir
+        tests:
+          - unique
+          - not_null
+
+      - name: WELL_NAME
+      - name: ACTIVE_WELLBORE_NUMBER
+      - name: WELL_CLASS
+      - name: SPUD_DATE
+      - name: OFM_UniqueID
+      - name: Reservoir_Name_Ru
+	

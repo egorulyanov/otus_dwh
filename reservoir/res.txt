@@ -1,0 +1,355 @@
+
+
+============================== 2024-09-06 10:43:07.212795 | cb08f0cc-c070-4204-9b99-3dcbfd81aed3 ==============================
+[0m10:43:07.212795 [info ] [MainThread]: Running with dbt=1.4.5
+[0m10:43:07.214789 [debug] [MainThread]: running dbt with arguments {'debug': True, 'write_json': True, 'use_colors': True, 'printer_width': 80, 'version_check': True, 'partial_parse': True, 'static_parser': True, 'profiles_dir': 'D:\\DWH\\reservoir', 'send_anonymous_usage_stats': True, 'quiet': False, 'no_print': False, 'cache_selected_only': False, 'which': 'run', 'rpc_method': 'run', 'indirect_selection': 'eager'}
+[0m10:43:07.215792 [debug] [MainThread]: Tracking: tracking
+[0m10:43:07.259649 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F4845CCED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F4840DCC10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F483EB7BD0>]}
+[0m10:43:07.281039 [debug] [MainThread]: checksum: e05dd7cee44d39ae8ac27965cacd8a6d8d0ab4e8185101e0db84e98f79bee0b6, vars: {}, profile: None, target: None, version: 1.4.5
+[0m10:43:07.396993 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m10:43:07.397990 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m10:43:07.405969 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'cb08f0cc-c070-4204-9b99-3dcbfd81aed3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F4845C1650>]}
+[0m10:43:07.420932 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'cb08f0cc-c070-4204-9b99-3dcbfd81aed3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F484657FD0>]}
+[0m10:43:07.420932 [info ] [MainThread]: Found 4 models, 11 tests, 0 snapshots, 0 analyses, 414 macros, 0 operations, 5 seed files, 0 sources, 0 exposures, 0 metrics
+[0m10:43:07.421930 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'cb08f0cc-c070-4204-9b99-3dcbfd81aed3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F48170B3D0>]}
+[0m10:43:07.423924 [info ] [MainThread]: 
+[0m10:43:07.426915 [debug] [MainThread]: Acquiring new duckdb connection 'master'
+[0m10:43:07.429352 [debug] [ThreadPool]: Acquiring new duckdb connection 'list_reservoir'
+[0m10:43:07.447322 [debug] [ThreadPool]: Using duckdb connection "list_reservoir"
+[0m10:43:07.448703 [debug] [ThreadPool]: On list_reservoir: /* {"app": "dbt", "dbt_version": "1.4.5", "profile_name": "reservoir", "target_name": "duckdb", "connection_name": "list_reservoir"} */
+
+    
+    select schema_name
+    from information_schema.schemata
+  
+  
+[0m10:43:07.449656 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m10:43:07.463696 [debug] [ThreadPool]: SQL status: OK in 0 seconds
+[0m10:43:07.465692 [debug] [ThreadPool]: On list_reservoir: Close
+[0m10:43:07.471732 [debug] [ThreadPool]: Acquiring new duckdb connection 'list_reservoir_marts'
+[0m10:43:07.473755 [debug] [ThreadPool]: Acquiring new duckdb connection 'list_reservoir_sourcedata'
+[0m10:43:07.480711 [debug] [ThreadPool]: Using duckdb connection "list_reservoir_marts"
+[0m10:43:07.483702 [debug] [ThreadPool]: Using duckdb connection "list_reservoir_sourcedata"
+[0m10:43:07.484271 [debug] [ThreadPool]: On list_reservoir_marts: BEGIN
+[0m10:43:07.485061 [debug] [ThreadPool]: On list_reservoir_sourcedata: BEGIN
+[0m10:43:07.485910 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m10:43:07.486912 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m10:43:07.499173 [debug] [ThreadPool]: SQL status: OK in 0 seconds
+[0m10:43:07.500175 [debug] [ThreadPool]: SQL status: OK in 0 seconds
+[0m10:43:07.501143 [debug] [ThreadPool]: Using duckdb connection "list_reservoir_marts"
+[0m10:43:07.501914 [debug] [ThreadPool]: Using duckdb connection "list_reservoir_sourcedata"
+[0m10:43:07.502619 [debug] [ThreadPool]: On list_reservoir_marts: /* {"app": "dbt", "dbt_version": "1.4.5", "profile_name": "reservoir", "target_name": "duckdb", "connection_name": "list_reservoir_marts"} */
+select
+      'reservoir' as database,
+      table_name as name,
+      table_schema as schema,
+      CASE table_type
+        WHEN 'BASE TABLE' THEN 'table'
+        WHEN 'VIEW' THEN 'view'
+        WHEN 'LOCAL TEMPORARY' THEN 'table'
+        END as type
+    from information_schema.tables
+    where table_schema = 'marts'
+  
+[0m10:43:07.503371 [debug] [ThreadPool]: On list_reservoir_sourcedata: /* {"app": "dbt", "dbt_version": "1.4.5", "profile_name": "reservoir", "target_name": "duckdb", "connection_name": "list_reservoir_sourcedata"} */
+select
+      'reservoir' as database,
+      table_name as name,
+      table_schema as schema,
+      CASE table_type
+        WHEN 'BASE TABLE' THEN 'table'
+        WHEN 'VIEW' THEN 'view'
+        WHEN 'LOCAL TEMPORARY' THEN 'table'
+        END as type
+    from information_schema.tables
+    where table_schema = 'sourcedata'
+  
+[0m10:43:07.563676 [debug] [ThreadPool]: SQL status: OK in 0 seconds
+[0m10:43:07.564676 [debug] [ThreadPool]: SQL status: OK in 0 seconds
+[0m10:43:07.579635 [debug] [ThreadPool]: On list_reservoir_marts: ROLLBACK
+[0m10:43:07.580632 [debug] [ThreadPool]: On list_reservoir_sourcedata: ROLLBACK
+[0m10:43:07.583874 [debug] [ThreadPool]: Failed to rollback 'list_reservoir_marts'
+[0m10:43:07.584871 [debug] [ThreadPool]: Failed to rollback 'list_reservoir_sourcedata'
+[0m10:43:07.585868 [debug] [ThreadPool]: On list_reservoir_marts: Close
+[0m10:43:07.586865 [debug] [ThreadPool]: On list_reservoir_sourcedata: Close
+[0m10:43:07.595198 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'cb08f0cc-c070-4204-9b99-3dcbfd81aed3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F4845A1D90>]}
+[0m10:43:07.595198 [debug] [MainThread]: Using duckdb connection "master"
+[0m10:43:07.596200 [debug] [MainThread]: On master: BEGIN
+[0m10:43:07.597196 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m10:43:07.609482 [debug] [MainThread]: SQL status: OK in 0 seconds
+[0m10:43:07.610473 [debug] [MainThread]: On master: COMMIT
+[0m10:43:07.611472 [debug] [MainThread]: Using duckdb connection "master"
+[0m10:43:07.611472 [debug] [MainThread]: On master: COMMIT
+[0m10:43:07.612469 [debug] [MainThread]: SQL status: OK in 0 seconds
+[0m10:43:07.613466 [debug] [MainThread]: On master: Close
+[0m10:43:07.616963 [info ] [MainThread]: Concurrency: 12 threads (target='duckdb')
+[0m10:43:07.617961 [info ] [MainThread]: 
+[0m10:43:07.627935 [debug] [Thread-1 (]: Began running node model.reservoir.dim_date
+[0m10:43:07.628933 [debug] [Thread-2 (]: Began running node model.reservoir.dim_well_pool
+[0m10:43:07.628933 [debug] [Thread-3 (]: Began running node model.reservoir.dim_well_reservoir
+[0m10:43:07.628933 [debug] [Thread-4 (]: Began running node model.reservoir.fct_production
+[0m10:43:07.630926 [info ] [Thread-1 (]: 1 of 4 START sql table model marts.dim_date .................................... [RUN]
+[0m10:43:07.630926 [info ] [Thread-2 (]: 2 of 4 START sql table model marts.dim_well_pool ............................... [RUN]
+[0m10:43:07.631925 [info ] [Thread-3 (]: 3 of 4 START sql table model marts.dim_well_reservoir .......................... [RUN]
+[0m10:43:07.632924 [info ] [Thread-4 (]: 4 of 4 START sql table model marts.fct_production .............................. [RUN]
+[0m10:43:07.633919 [debug] [Thread-1 (]: Acquiring new duckdb connection 'model.reservoir.dim_date'
+[0m10:43:07.635915 [debug] [Thread-2 (]: Acquiring new duckdb connection 'model.reservoir.dim_well_pool'
+[0m10:43:07.636913 [debug] [Thread-3 (]: Acquiring new duckdb connection 'model.reservoir.dim_well_reservoir'
+[0m10:43:07.637909 [debug] [Thread-4 (]: Acquiring new duckdb connection 'model.reservoir.fct_production'
+[0m10:43:07.638935 [debug] [Thread-1 (]: Began compiling node model.reservoir.dim_date
+[0m10:43:07.638935 [debug] [Thread-2 (]: Began compiling node model.reservoir.dim_well_pool
+[0m10:43:07.639904 [debug] [Thread-3 (]: Began compiling node model.reservoir.dim_well_reservoir
+[0m10:43:07.640903 [debug] [Thread-4 (]: Began compiling node model.reservoir.fct_production
+[0m10:43:07.659853 [debug] [Thread-1 (]: Writing injected SQL for node "model.reservoir.dim_date"
+[0m10:43:07.665835 [debug] [Thread-2 (]: Writing injected SQL for node "model.reservoir.dim_well_pool"
+[0m10:43:07.671820 [debug] [Thread-3 (]: Writing injected SQL for node "model.reservoir.dim_well_reservoir"
+[0m10:43:07.680797 [debug] [Thread-4 (]: Writing injected SQL for node "model.reservoir.fct_production"
+[0m10:43:07.682877 [debug] [Thread-1 (]: Timing info for model.reservoir.dim_date (compile): 2024-09-06 10:43:07.641898 => 2024-09-06 10:43:07.682877
+[0m10:43:07.683876 [debug] [Thread-2 (]: Timing info for model.reservoir.dim_well_pool (compile): 2024-09-06 10:43:07.660847 => 2024-09-06 10:43:07.683876
+[0m10:43:07.683876 [debug] [Thread-3 (]: Timing info for model.reservoir.dim_well_reservoir (compile): 2024-09-06 10:43:07.666834 => 2024-09-06 10:43:07.683876
+[0m10:43:07.685594 [debug] [Thread-1 (]: Began executing node model.reservoir.dim_date
+[0m10:43:07.686607 [debug] [Thread-4 (]: Timing info for model.reservoir.fct_production (compile): 2024-09-06 10:43:07.672826 => 2024-09-06 10:43:07.685594
+[0m10:43:07.686607 [debug] [Thread-2 (]: Began executing node model.reservoir.dim_well_pool
+[0m10:43:07.687593 [debug] [Thread-3 (]: Began executing node model.reservoir.dim_well_reservoir
+[0m10:43:07.730768 [debug] [Thread-1 (]: Writing runtime sql for node "model.reservoir.dim_date"
+[0m10:43:07.732193 [debug] [Thread-4 (]: Began executing node model.reservoir.fct_production
+[0m10:43:07.736188 [debug] [Thread-2 (]: Writing runtime sql for node "model.reservoir.dim_well_pool"
+[0m10:43:07.742193 [debug] [Thread-3 (]: Writing runtime sql for node "model.reservoir.dim_well_reservoir"
+[0m10:43:07.747208 [debug] [Thread-4 (]: Writing runtime sql for node "model.reservoir.fct_production"
+[0m10:43:07.748511 [debug] [Thread-1 (]: Using duckdb connection "model.reservoir.dim_date"
+[0m10:43:07.749506 [debug] [Thread-2 (]: Using duckdb connection "model.reservoir.dim_well_pool"
+[0m10:43:07.750502 [debug] [Thread-1 (]: On model.reservoir.dim_date: BEGIN
+[0m10:43:07.751498 [debug] [Thread-3 (]: Using duckdb connection "model.reservoir.dim_well_reservoir"
+[0m10:43:07.751498 [debug] [Thread-4 (]: Using duckdb connection "model.reservoir.fct_production"
+[0m10:43:07.752498 [debug] [Thread-2 (]: On model.reservoir.dim_well_pool: BEGIN
+[0m10:43:07.753493 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m10:43:07.753493 [debug] [Thread-3 (]: On model.reservoir.dim_well_reservoir: BEGIN
+[0m10:43:07.754491 [debug] [Thread-4 (]: On model.reservoir.fct_production: BEGIN
+[0m10:43:07.755487 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m10:43:07.767916 [debug] [Thread-1 (]: SQL status: OK in 0 seconds
+[0m10:43:07.768938 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m10:43:07.769910 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m10:43:07.770908 [debug] [Thread-2 (]: SQL status: OK in 0 seconds
+[0m10:43:07.770908 [debug] [Thread-1 (]: Using duckdb connection "model.reservoir.dim_date"
+[0m10:43:07.771912 [debug] [Thread-3 (]: SQL status: OK in 0 seconds
+[0m10:43:07.772922 [debug] [Thread-4 (]: SQL status: OK in 0 seconds
+[0m10:43:07.773900 [debug] [Thread-2 (]: Using duckdb connection "model.reservoir.dim_well_pool"
+[0m10:43:07.774897 [debug] [Thread-1 (]: On model.reservoir.dim_date: /* {"app": "dbt", "dbt_version": "1.4.5", "profile_name": "reservoir", "target_name": "duckdb", "node_id": "model.reservoir.dim_date"} */
+
+  
+    
+
+    create  table
+      "reservoir"."marts"."dim_date__dbt_tmp"
+    as (
+      with stg_date as (
+    select * from "reservoir"."sourcedata"."date"
+)
+
+select
+    md5(cast(coalesce(cast(stg_date.full_dte as TEXT), '_dbt_utils_surrogate_key_null_') as TEXT)) as date_key,
+    *
+from stg_date
+    );
+  
+[0m10:43:07.774897 [debug] [Thread-3 (]: Using duckdb connection "model.reservoir.dim_well_reservoir"
+[0m10:43:07.775895 [debug] [Thread-4 (]: Using duckdb connection "model.reservoir.fct_production"
+[0m10:43:07.776907 [debug] [Thread-2 (]: On model.reservoir.dim_well_pool: /* {"app": "dbt", "dbt_version": "1.4.5", "profile_name": "reservoir", "target_name": "duckdb", "node_id": "model.reservoir.dim_well_pool"} */
+
+  
+    
+
+    create  table
+      "reservoir"."marts"."dim_well_pool__dbt_tmp"
+    as (
+      with stg_reservoir as (
+    select
+        LITHOSTRATIGRAPHIC_UNIT_NAME,
+        REGIONAL_STAGE,
+	PRODUCTION_RESERVOIR
+    from "reservoir"."sourcedata"."Reservoir"
+),
+
+stg_pool as (
+    select
+	Код,
+        Reservoir_Name_Ru,
+        OFM_UniqueID,
+        Pool_Cadastr_num
+    from "reservoir"."sourcedata"."WellPool"
+)
+
+select
+    md5(cast(coalesce(cast(stg_pool.Код as TEXT), '_dbt_utils_surrogate_key_null_') as TEXT)) as well_pool_key,
+    LITHOSTRATIGRAPHIC_UNIT_NAME,    
+    REGIONAL_STAGE,
+    OFM_UniqueID,
+    Reservoir_Name_Ru
+from stg_reservoir 
+join stg_pool on stg_reservoir.PRODUCTION_RESERVOIR = stg_pool.Reservoir_Name_Ru
+    );
+  
+[0m10:43:07.777889 [debug] [Thread-3 (]: On model.reservoir.dim_well_reservoir: /* {"app": "dbt", "dbt_version": "1.4.5", "profile_name": "reservoir", "target_name": "duckdb", "node_id": "model.reservoir.dim_well_reservoir"} */
+
+  
+    
+
+    create  table
+      "reservoir"."marts"."dim_well_reservoir__dbt_tmp"
+    as (
+      with stg_well as (
+    select
+        WELL_NAME, 
+        ACTIVE_WELLBORE_NUMBER, 
+        WELL_CLASS, 
+        SPUD_DATE
+    from "reservoir"."sourcedata"."Well"
+),
+
+with stg_well_reservoir as (
+    select
+	OFM_UniqueID,
+        Reservoir_Name_Ru,
+        Conduit
+    from "reservoir"."sourcedata"."WellPool"
+)
+
+select
+    md5(cast(coalesce(cast(stg_well_reservoir.OFM_UniqueID as TEXT), '_dbt_utils_surrogate_key_null_') as TEXT)) as well_reservoir_key,
+	WELL_NAME, 
+	ACTIVE_WELLBORE_NUMBER, 
+	WELL_CLASS, 
+	SPUD_DATE, 
+	OFM_UniqueID, 
+	Reservoir_Name_Ru
+from stg_well
+join stg_well_reservoir on stg_well_reservoir.Conduit = stg_well.WELL_NAME
+    );
+  
+[0m10:43:07.778886 [debug] [Thread-4 (]: On model.reservoir.fct_production: /* {"app": "dbt", "dbt_version": "1.4.5", "profile_name": "reservoir", "target_name": "duckdb", "node_id": "model.reservoir.fct_production"} */
+
+  
+    
+
+    create  table
+      "reservoir"."marts"."fct_production__dbt_tmp"
+    as (
+      stg_monthly_prod as (
+SELECT UniqueId, 
+	Date, 
+	Oil, 
+	Gas, 
+	Water, 
+	Liquid, 
+	WellUptimeDays
+    from "reservoir"."sourcedata"."MonthlyProd"
+)
+
+select
+    md5(cast(coalesce(cast(stg_monthly_prod.UniqueId as TEXT), '_dbt_utils_surrogate_key_null_') || '-' || coalesce(cast(Date as TEXT), '_dbt_utils_surrogate_key_null_') as TEXT)) as monthly_prod_key,
+    md5(cast(coalesce(cast(UniqueId as TEXT), '_dbt_utils_surrogate_key_null_') as TEXT)) as well_reservoir_key,
+	Date, 
+	Oil, 
+	Gas, 
+	Water, 
+	Liquid, 
+	WellUptimeDays
+from stg_monthly_prod
+    );
+  
+[0m10:43:07.780883 [debug] [Thread-3 (]: Timing info for model.reservoir.dim_well_reservoir (execute): 2024-09-06 10:43:07.737183 => 2024-09-06 10:43:07.780883
+[0m10:43:07.782880 [debug] [Thread-4 (]: Timing info for model.reservoir.fct_production (execute): 2024-09-06 10:43:07.743190 => 2024-09-06 10:43:07.782880
+[0m10:43:07.784879 [debug] [Thread-3 (]: On model.reservoir.dim_well_reservoir: ROLLBACK
+[0m10:43:07.785868 [debug] [Thread-4 (]: On model.reservoir.fct_production: ROLLBACK
+[0m10:43:07.786867 [debug] [Thread-2 (]: SQL status: OK in 0 seconds
+[0m10:43:07.798925 [debug] [Thread-2 (]: Using duckdb connection "model.reservoir.dim_well_pool"
+[0m10:43:07.798925 [debug] [Thread-1 (]: SQL status: OK in 0 seconds
+[0m10:43:07.798925 [debug] [Thread-2 (]: On model.reservoir.dim_well_pool: /* {"app": "dbt", "dbt_version": "1.4.5", "profile_name": "reservoir", "target_name": "duckdb", "node_id": "model.reservoir.dim_well_pool"} */
+alter table "reservoir"."marts"."dim_well_pool" rename to "dim_well_pool__dbt_backup"
+[0m10:43:07.798925 [debug] [Thread-1 (]: Using duckdb connection "model.reservoir.dim_date"
+[0m10:43:07.808928 [debug] [Thread-1 (]: On model.reservoir.dim_date: /* {"app": "dbt", "dbt_version": "1.4.5", "profile_name": "reservoir", "target_name": "duckdb", "node_id": "model.reservoir.dim_date"} */
+alter table "reservoir"."marts"."dim_date" rename to "dim_date__dbt_backup"
+[0m10:43:07.809931 [debug] [Thread-2 (]: SQL status: OK in 0 seconds
+[0m10:43:07.810921 [debug] [Thread-1 (]: SQL status: OK in 0 seconds
+[0m10:43:07.815906 [debug] [Thread-2 (]: Using duckdb connection "model.reservoir.dim_well_pool"
+[0m10:43:07.819896 [debug] [Thread-1 (]: Using duckdb connection "model.reservoir.dim_date"
+[0m10:43:07.820893 [debug] [Thread-2 (]: On model.reservoir.dim_well_pool: /* {"app": "dbt", "dbt_version": "1.4.5", "profile_name": "reservoir", "target_name": "duckdb", "node_id": "model.reservoir.dim_well_pool"} */
+alter table "reservoir"."marts"."dim_well_pool__dbt_tmp" rename to "dim_well_pool"
+[0m10:43:07.821892 [debug] [Thread-1 (]: On model.reservoir.dim_date: /* {"app": "dbt", "dbt_version": "1.4.5", "profile_name": "reservoir", "target_name": "duckdb", "node_id": "model.reservoir.dim_date"} */
+alter table "reservoir"."marts"."dim_date__dbt_tmp" rename to "dim_date"
+[0m10:43:07.824885 [debug] [Thread-2 (]: SQL status: OK in 0 seconds
+[0m10:43:07.825881 [debug] [Thread-1 (]: SQL status: OK in 0 seconds
+[0m10:43:07.852808 [debug] [Thread-2 (]: On model.reservoir.dim_well_pool: COMMIT
+[0m10:43:07.855910 [debug] [Thread-1 (]: On model.reservoir.dim_date: COMMIT
+[0m10:43:07.856912 [debug] [Thread-4 (]: Failed to rollback 'model.reservoir.fct_production'
+[0m10:43:07.859643 [debug] [Thread-3 (]: Failed to rollback 'model.reservoir.dim_well_reservoir'
+[0m10:43:07.859643 [debug] [Thread-2 (]: Using duckdb connection "model.reservoir.dim_well_pool"
+[0m10:43:07.860719 [debug] [Thread-1 (]: Using duckdb connection "model.reservoir.dim_date"
+[0m10:43:07.861472 [debug] [Thread-4 (]: On model.reservoir.fct_production: Close
+[0m10:43:07.862238 [debug] [Thread-3 (]: On model.reservoir.dim_well_reservoir: Close
+[0m10:43:07.862990 [debug] [Thread-2 (]: On model.reservoir.dim_well_pool: COMMIT
+[0m10:43:07.863719 [debug] [Thread-1 (]: On model.reservoir.dim_date: COMMIT
+[0m10:43:07.869060 [debug] [Thread-4 (]: Runtime Error in model fct_production (models\marts\fct_production.sql)
+  Parser Error: syntax error at or near "stg_monthly_prod"
+[0m10:43:07.871051 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'cb08f0cc-c070-4204-9b99-3dcbfd81aed3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F48466EDD0>]}
+[0m10:43:07.872046 [debug] [Thread-3 (]: Runtime Error in model dim_well_reservoir (models\marts\dim_well_reservoir.sql)
+  Parser Error: syntax error at or near "with"
+[0m10:43:07.873044 [error] [Thread-4 (]: 4 of 4 ERROR creating sql table model marts.fct_production ..................... [[31mERROR[0m in 0.23s]
+[0m10:43:07.874308 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'cb08f0cc-c070-4204-9b99-3dcbfd81aed3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F48471FE50>]}
+[0m10:43:07.876352 [debug] [Thread-4 (]: Finished running node model.reservoir.fct_production
+[0m10:43:07.877349 [error] [Thread-3 (]: 3 of 4 ERROR creating sql table model marts.dim_well_reservoir ................. [[31mERROR[0m in 0.24s]
+[0m10:43:07.879567 [debug] [Thread-3 (]: Finished running node model.reservoir.dim_well_reservoir
+[0m10:43:07.930535 [debug] [Thread-2 (]: SQL status: OK in 0 seconds
+[0m10:43:07.941506 [debug] [Thread-2 (]: Using duckdb connection "model.reservoir.dim_well_pool"
+[0m10:43:07.942504 [debug] [Thread-2 (]: On model.reservoir.dim_well_pool: /* {"app": "dbt", "dbt_version": "1.4.5", "profile_name": "reservoir", "target_name": "duckdb", "node_id": "model.reservoir.dim_well_pool"} */
+drop table if exists "reservoir"."marts"."dim_well_pool__dbt_backup" cascade
+[0m10:43:07.978038 [debug] [Thread-1 (]: SQL status: OK in 0 seconds
+[0m10:43:07.981556 [debug] [Thread-1 (]: Using duckdb connection "model.reservoir.dim_date"
+[0m10:43:07.981556 [debug] [Thread-1 (]: On model.reservoir.dim_date: /* {"app": "dbt", "dbt_version": "1.4.5", "profile_name": "reservoir", "target_name": "duckdb", "node_id": "model.reservoir.dim_date"} */
+drop table if exists "reservoir"."marts"."dim_date__dbt_backup" cascade
+[0m10:43:08.001282 [debug] [Thread-2 (]: SQL status: OK in 0 seconds
+[0m10:43:08.003281 [debug] [Thread-2 (]: Timing info for model.reservoir.dim_well_pool (execute): 2024-09-06 10:43:07.732193 => 2024-09-06 10:43:08.003281
+[0m10:43:08.004277 [debug] [Thread-2 (]: On model.reservoir.dim_well_pool: Close
+[0m10:43:08.005275 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'cb08f0cc-c070-4204-9b99-3dcbfd81aed3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F4859246D0>]}
+[0m10:43:08.006273 [info ] [Thread-2 (]: 2 of 4 OK created sql table model marts.dim_well_pool .......................... [[32mOK[0m in 0.37s]
+[0m10:43:08.006273 [debug] [Thread-2 (]: Finished running node model.reservoir.dim_well_pool
+[0m10:43:08.022865 [debug] [Thread-1 (]: SQL status: OK in 0 seconds
+[0m10:43:08.025487 [debug] [Thread-1 (]: Timing info for model.reservoir.dim_date (execute): 2024-09-06 10:43:07.688591 => 2024-09-06 10:43:08.025487
+[0m10:43:08.025487 [debug] [Thread-1 (]: On model.reservoir.dim_date: Close
+[0m10:43:08.206019 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'cb08f0cc-c070-4204-9b99-3dcbfd81aed3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F483B2EE90>]}
+[0m10:43:08.207019 [info ] [Thread-1 (]: 1 of 4 OK created sql table model marts.dim_date ............................... [[32mOK[0m in 0.57s]
+[0m10:43:08.208029 [debug] [Thread-1 (]: Finished running node model.reservoir.dim_date
+[0m10:43:08.212138 [debug] [MainThread]: Acquiring new duckdb connection 'master'
+[0m10:43:08.212138 [debug] [MainThread]: Using duckdb connection "master"
+[0m10:43:08.213129 [debug] [MainThread]: On master: BEGIN
+[0m10:43:08.214126 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m10:43:08.226094 [debug] [MainThread]: SQL status: OK in 0 seconds
+[0m10:43:08.226094 [debug] [MainThread]: On master: COMMIT
+[0m10:43:08.227092 [debug] [MainThread]: Using duckdb connection "master"
+[0m10:43:08.228088 [debug] [MainThread]: On master: COMMIT
+[0m10:43:08.229247 [debug] [MainThread]: SQL status: OK in 0 seconds
+[0m10:43:08.230083 [debug] [MainThread]: On master: Close
+[0m10:43:08.233075 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m10:43:08.234072 [debug] [MainThread]: Connection 'list_reservoir' was properly closed.
+[0m10:43:08.234072 [debug] [MainThread]: Connection 'list_reservoir_marts' was properly closed.
+[0m10:43:08.235070 [debug] [MainThread]: Connection 'list_reservoir_sourcedata' was properly closed.
+[0m10:43:08.235070 [debug] [MainThread]: Connection 'model.reservoir.dim_date' was properly closed.
+[0m10:43:08.236076 [debug] [MainThread]: Connection 'model.reservoir.dim_well_pool' was properly closed.
+[0m10:43:08.236076 [debug] [MainThread]: Connection 'model.reservoir.dim_well_reservoir' was properly closed.
+[0m10:43:08.237065 [debug] [MainThread]: Connection 'model.reservoir.fct_production' was properly closed.
+[0m10:43:08.237065 [info ] [MainThread]: 
+[0m10:43:08.238063 [info ] [MainThread]: Finished running 4 table models in 0 hours 0 minutes and 0.81 seconds (0.81s).
+[0m10:43:08.239060 [debug] [MainThread]: Command end result
+[0m10:43:08.252025 [info ] [MainThread]: 
+[0m10:43:08.252025 [info ] [MainThread]: [31mCompleted with 2 errors and 0 warnings:[0m
+[0m10:43:08.253023 [info ] [MainThread]: 
+[0m10:43:08.253023 [error] [MainThread]: [33mRuntime Error in model fct_production (models\marts\fct_production.sql)[0m
+[0m10:43:08.254020 [error] [MainThread]:   Parser Error: syntax error at or near "stg_monthly_prod"
+[0m10:43:08.254020 [info ] [MainThread]: 
+[0m10:43:08.255017 [error] [MainThread]: [33mRuntime Error in model dim_well_reservoir (models\marts\dim_well_reservoir.sql)[0m
+[0m10:43:08.255017 [error] [MainThread]:   Parser Error: syntax error at or near "with"
+[0m10:43:08.256015 [info ] [MainThread]: 
+[0m10:43:08.256015 [info ] [MainThread]: Done. PASS=2 WARN=0 ERROR=2 SKIP=0 TOTAL=4
+[0m10:43:08.258026 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F483F40BD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F483CAF2D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F483F9AC50>]}
+[0m10:43:08.258989 [debug] [MainThread]: Flushing usage events
+[0m10:43:08.509211 [debug] [MainThread]: Error sending anonymous usage statistics. Disabling tracking for this execution. If you wish to permanently disable tracking, see: https://docs.getdbt.com/reference/global-configs#send-anonymous-usage-stats.

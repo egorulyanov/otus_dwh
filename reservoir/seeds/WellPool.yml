@@ -1,0 +1,12 @@
+version: 2 
+
+seeds: 
+  - name: WellPool
+    config: 
+      schema: sourcedata
+      column_types: 
+        Well_Pool_ID: integer
+        OFM_UniqueID: varchar
+        Reservoir_Name_Ru: varchar
+        Pool_Cadastr_num: varchar
+        Conduit: varchar
