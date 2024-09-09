@@ -10,7 +10,7 @@ SELECT UniqueId,
 )
 
 select
-    {{ dbt_utils.generate_surrogate_key(['stg_monthly_prod.UniqueId', 'Date']) }} as monthly_prod_key,
+    {{ dbt_utils.generate_surrogate_key(['Date']) }} as date_key,
     {{ dbt_utils.generate_surrogate_key(['UniqueId']) }} as well_reservoir_key,
 	Date, 
 	Oil, 

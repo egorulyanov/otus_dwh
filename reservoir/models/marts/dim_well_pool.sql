@@ -16,10 +16,11 @@ stg_pool as (
 )
 
 select
-    {{ dbt_utils.generate_surrogate_key(['stg_pool.Код']) }} as well_pool_key,
+    {{ dbt_utils.generate_surrogate_key(['OFM_UniqueID']) }} as well_reservoir_key,
     LITHOSTRATIGRAPHIC_UNIT_NAME,    
     REGIONAL_STAGE,
     OFM_UniqueID,
-    Reservoir_Name_Ru
+    Reservoir_Name_Ru,
+    Pool_Cadastr_num
 from stg_reservoir 
 join stg_pool on stg_reservoir.PRODUCTION_RESERVOIR = stg_pool.Reservoir_Name_Ru 
